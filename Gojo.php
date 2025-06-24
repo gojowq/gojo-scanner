@@ -1,5 +1,4 @@
 <?php
-
 // ==============================
 // Scanner de segurança PHP
 // Desenvolvido por EDUZADA & farmapostas
