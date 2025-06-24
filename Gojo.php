@@ -1,9 +1,11 @@
 <?php
+
 // ==============================
 // Scanner de segurança PHP
 // Desenvolvido por EDUZADA & farmapostas
 // ==============================
 
+<?php
 
 $branco = "\e[97m";
 $preto = "\e[30m\e[1m";
