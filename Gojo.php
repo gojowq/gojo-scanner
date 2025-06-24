@@ -4,6 +4,7 @@
 // Desenvolvido por EDUZADA & farmapostas
 // ==============================
 
+<?php
 
 $branco = "\e[97m";
 $preto = "\e[30m\e[1m";
@@ -28,9 +29,11 @@ $ciano = "\e[36m";
 $bold   = "\e[1m";
 function eduzada_banner(){
   echo "\e[37m
-           EDUZADA Android\e[36m Screen Share \033[91m\e[37m \033[91m
+           EDUZADA Android\e[36m\033[91m\e[37m \033[91m
+            
 
-                    \e[36m{C} Eduzada & Farmapostas                                   
+
+                    \e[36m{C}By - EDUZADA                                     
 \e[32m
   \n";
 }
@@ -43,7 +46,7 @@ function atualizar()
     global $cln, $bold, $fverde;
     echo "\n\033[91m\e[1m[+] EDUZADA Updater [+]\nAtualizando, por favor aguarde...\n\n$cln";
     system("git fetch origin && git reset --hard origin/master && git clean -f -d");
-    echo $bold . $fverde . "::i:: Atualização concluida! Por favor reinicie o Scanner \n" . $cln;
+    echo $bold . $fverde . "[i] Atualização concluida! Por favor reinicie o Scanner \n" . $cln;
     exit;
 }
 
@@ -63,11 +66,11 @@ menuscanner:
 
     echo $bold . $azul . "
       +--------------------------------------------------------------+
-      +                       Escolha                           +
+      +                       EDUZADA Menu                          +
       +--------------------------------------------------------------+
 
       \n\n";
-      echo $roxo . " [0]  Instalar Módulos$branco (Atualizar e instalar módulos)$fverde \n [1]  Escanear FreeFire Normal \n$fverde [2]  Escanear FreeFire Max \n {$vermelho}::S::  Sair \n\n" . $cln;
+      echo $roxo . " [0]  Instalar Módulos$branco (Atualizar e instalar módulos)$fverde \n [1]  Escanear FreeFire Normal \n$fverde [2]  Escanear FreeFire Max \n {$vermelho}[S]  Sair \n\n" . $cln;
 escolheropcoes:
     inputusuario("Escolha uma das opções acima");
     $opcaoscanner = trim(fgets(STDIN, 1024));
@@ -153,7 +156,7 @@ escolheropcoes:
                 $minutos = $filtros[1];
                 echo $bold . $vermelho . "[!] O dispositivo foi iniciado recentemente (há $minutos minutos).\n\n";
             } else {
-                echo $bold . $fverde . "::i:: Dispositivo não reiniciado recentemente.\n\n";
+                echo $bold . $fverde . "[i] Dispositivo não reiniciado recentemente.\n\n";
             }
 
 
@@ -249,7 +252,7 @@ escolheropcoes:
             if ($autoTime !== "1" || $autoTimeZone !== "1") {
                 echo $bold . $vermelho . "[!] Possível bypass detectado: data e hora/furo horário automático desativado.\n";
             } else {
-                echo $bold . $fverde . "::i:: Data e hora/fuso horário automático estão ativados.\n";
+                echo $bold . $fverde . "[i] Data e hora/fuso horário automático estão ativados.\n";
             }
 
             echo $bold . $branco . "[+] Caso haja mudança de horário durante/após a partida, aplique o W.O!\n\n";
@@ -260,7 +263,7 @@ escolheropcoes:
             $comandoUSAGE = shell_exec("adb shell dumpsys usagestats 2>/dev/null | grep -i 'MOVE_TO_FOREGROUND' 2>/dev/null | grep 'package=com.android.vending' 2>/dev/null | awk -F'time=\"' '{print \$2}' 2>/dev/null | awk '{gsub(/\"/, \"\"); print \$1, \$2}' 2>/dev/null | tail -n 5 2>/dev/null");
 
             if (!is_null($comandoUSAGE) && trim($comandoUSAGE) !== "") {
-                echo $bold . $fverde . "::i:: Últimos 5 acessos:\n";
+                echo $bold . $fverde . "[i] Últimos 5 acessos:\n";
                 echo $roxo . $comandoUSAGE . "\n";
             } else {
                 echo $bold . "\e[31m[!] Nenhum dado encontrado.\n";
@@ -495,7 +498,7 @@ escolheropcoes:
                         echo "    - " . $motivo . "\n";
                     }
                 } else {
-                    echo $bold . $fverde . "::i:: Nenhum replay foi passado e a pasta MReplays está normal.\n";
+                    echo $bold . $fverde . "[i] Nenhum replay foi passado e a pasta MReplays está normal.\n";
                 }
 
 
@@ -585,7 +588,7 @@ escolheropcoes:
                                 $dataChangeFormatadaLegivel = $dateTimeChange ? $dateTimeChange->format('d-m-Y H:i:s') : $dataChangeFormatada;
                                 
                                 echo $bold . $vermelho . "[!] Bypass de renomear/substituir na pasta: $nomefinalpasta! Confira se o horário é após a partida, se sim, aplique o W.O!\n";
-                                echo $bold . $roxo . "::i:: Horário do renomeio/substituição: $dataChangeFormatadaLegivel\n\n";
+                                echo $bold . $roxo . "[i] Horário do renomeio/substituição: $dataChangeFormatadaLegivel\n\n";
                             }
                         }
                     }
@@ -714,14 +717,14 @@ escolheropcoes:
                                     $dataChangeFormatadaLegivel = $dateTimeChange ? $dateTimeChange->format('d-m-Y H:i:s') : $changeDate;
                 
                                     echo $bold . $vermelho . "[!] Arquivo shader modificado: $nomeArquivo\n";
-                                    echo $bold . $roxo . "::i:: Horário da modificação: $dataChangeFormatadaLegivel\n";
+                                    echo $bold . $roxo . "[i] Horário da modificação: $dataChangeFormatadaLegivel\n";
                                     echo $bold . $vermelho . "[!] Verifique se a data é após a partida, se sim aplique o W.O!\n\n";
                                 }
                             }
                         }
                     }
                 } else {
-                    echo $bold . $roxo . "::i:: Nenhum arquivo de shader encontrado.\n";
+                    echo $bold . $roxo . "[i] Nenhum arquivo de shader encontrado.\n";
                 }
 
 
@@ -820,7 +823,7 @@ escolheropcoes:
                     echo $bold . $vermelho . "[*] Data de instalação do Free Fire: " . $dataInstalacaoFormatada . "\n";
                     echo $bold . $branco . "[#] Verifique cuidadosamente no App Usage a data de instalação do Free Fire!\n\n";
                 } else {
-                    echo $bold . $fverde . "::i:: Nenhuma alteração suspeita encontrada.\n";
+                    echo $bold . $fverde . "[i] Nenhuma alteração suspeita encontrada.\n";
                 }
 
 
@@ -868,7 +871,7 @@ escolheropcoes:
                     echo $bold . $vermelho . "[!] Modificação suspeita detectada na pasta shaders! Aplique o W.O!\n";
                     echo $bold . $roxo . "[*] Data da última modificação: " . $dataModifyFormatada . "\n\n";
                 } else {
-                    echo $bold . $fverde . "::i:: Pasta shaders sem alterações suspeitas.\n";
+                    echo $bold . $fverde . "[i] Pasta shaders sem alterações suspeitas.\n";
                     if (!empty($dataModifyFormatada)) {
                         echo $bold . $roxo . "[*] Data da última modificação: " . $dataModifyFormatada . "\n\n";
                     } else {
@@ -903,17 +906,17 @@ escolheropcoes:
 
                         if ($dataAccess === $dataModify && $dataModify === $dataChange) {
                             echo $bold . $vermelho . "[!] Possível bypass detectado - Datas idênticas\n";
-                            echo $bold . $vermelho . "::i:: Data: " . $dataModifyFormatada . "\n";
+                            echo $bold . $vermelho . "[i] Data: " . $dataModifyFormatada . "\n";
                         } elseif ($dataModify === $dataChange) {
-                            echo $bold . $roxo . "::i:: Modificação da pasta: " . $dataModifyFormatada . "\n";
+                            echo $bold . $roxo . "[i] Modificação da pasta: " . $dataModifyFormatada . "\n";
                         } else {
                             echo $bold . $vermelho . "[!] Discrepância encontrada\n";
                             $dateAccess = DateTime::createFromFormat('Y-m-d H:i:s.u', $dataAccess);
                             $dateChange = DateTime::createFromFormat('Y-m-d H:i:s.u', $dataChange);
                             if ($dateAccess && $dateChange) {
-                                echo $bold . $roxo . "::i:: Acesso: " . $dateAccess->format('d-m-Y H:i:s') . "\n";
-                                echo $bold . $roxo . "::i:: Modificação: " . $dataModifyFormatada . "\n";
-                                echo $bold . $roxo . "::i:: Mudança: " . $dateChange->format('d-m-Y H:i:s') . "\n";
+                                echo $bold . $roxo . "[i] Acesso: " . $dateAccess->format('d-m-Y H:i:s') . "\n";
+                                echo $bold . $roxo . "[i] Modificação: " . $dataModifyFormatada . "\n";
+                                echo $bold . $roxo . "[i] Mudança: " . $dateChange->format('d-m-Y H:i:s') . "\n";
                             }
                         }
                     } else {
@@ -1022,7 +1025,7 @@ escolheropcoes:
                     }
 
                     if (!$modificacaoDetectada) {
-                        echo $bold . $fverde . "::i:: Nenhuma alteração suspeita encontrada nos arquivos.\n\n";
+                        echo $bold . $fverde . "[i] Nenhuma alteração suspeita encontrada nos arquivos.\n\n";
                     }
                 } else {
                     echo $vermelho . "[*] Sem itens baixados! Verifique se a data é após o fim da partida!\n\n";
@@ -1130,7 +1133,7 @@ escolheropcoes:
                 $minutos = $filtros[1];
                 echo $bold . $vermelho . "[!] O dispositivo foi iniciado recentemente (há $minutos minutos).\n\n";
             } else {
-                echo $bold . $fverde . "::i:: Dispositivo não reiniciado recentemente.\n\n";
+                echo $bold . $fverde . "[i] Dispositivo não reiniciado recentemente.\n\n";
             }
 
 
@@ -1226,7 +1229,7 @@ escolheropcoes:
             if ($autoTime !== "1" || $autoTimeZone !== "1") {
                 echo $bold . $vermelho . "[!] Possível bypass detectado: data e hora/furo horário automático desativado.\n";
             } else {
-                echo $bold . $fverde . "::i:: Data e hora/fuso horário automático estão ativados.\n";
+                echo $bold . $fverde . "[i] Data e hora/fuso horário automático estão ativados.\n";
             }
 
             echo $bold . $branco . "[+] Caso haja mudança de horário durante/após a partida, aplique o W.O!\n\n";
@@ -1237,7 +1240,7 @@ escolheropcoes:
             $comandoUSAGE = shell_exec("adb shell dumpsys usagestats 2>/dev/null | grep -i 'MOVE_TO_FOREGROUND' 2>/dev/null | grep 'package=com.android.vending' 2>/dev/null | awk -F'time=\"' '{print \$2}' 2>/dev/null | awk '{gsub(/\"/, \"\"); print \$1, \$2}' 2>/dev/null | tail -n 5 2>/dev/null");
 
             if (!is_null($comandoUSAGE) && trim($comandoUSAGE) !== "") {
-                echo $bold . $fverde . "::i:: Últimos 5 acessos:\n";
+                echo $bold . $fverde . "[i] Últimos 5 acessos:\n";
                 echo $roxo . $comandoUSAGE . "\n";
             } else {
                 echo $bold . "\e[31m[!] Nenhum dado encontrado.\n";
@@ -1480,7 +1483,7 @@ escolheropcoes:
                         echo "    - " . $motivo . "\n";
                     }
                 } else {
-                    echo $bold . $fverde . "::i:: Nenhum replay foi passado e a pasta MReplays está normal.\n";
+                    echo $bold . $fverde . "[i] Nenhum replay foi passado e a pasta MReplays está normal.\n";
                 }
 
 
@@ -1572,7 +1575,7 @@ escolheropcoes:
                                 $dataChangeFormatadaLegivel = $dateTimeChange ? $dateTimeChange->format('d-m-Y H:i:s') : $dataChangeFormatada;
                                 
                                 echo $bold . $vermelho . "[!] Bypass de renomear/substituir na pasta: $nomefinalpasta! Confira se o horário é após a partida, se sim, aplique o W.O!\n";
-                                echo $bold . $roxo . "::i:: Horário do renomeio/substituição: $dataChangeFormatadaLegivel\n\n";
+                                echo $bold . $roxo . "[i] Horário do renomeio/substituição: $dataChangeFormatadaLegivel\n\n";
                             }
                         }
                     }
@@ -1701,14 +1704,14 @@ escolheropcoes:
                                     $dataChangeFormatadaLegivel = $dateTimeChange ? $dateTimeChange->format('d-m-Y H:i:s') : $changeDate;
                 
                                     echo $bold . $vermelho . "[!] Arquivo shader modificado: $nomeArquivo\n";
-                                    echo $bold . $roxo . "::i:: Horário da modificação: $dataChangeFormatadaLegivel\n";
+                                    echo $bold . $roxo . "[i] Horário da modificação: $dataChangeFormatadaLegivel\n";
                                     echo $bold . $vermelho . "[!] Verifique se a data é após a partida, se sim aplique o W.O!\n\n";
                                 }
                             }
                         }
                     }
                 } else {
-                    echo $bold . $roxo . "::i:: Nenhum arquivo de shader encontrado.\n";
+                    echo $bold . $roxo . "[i] Nenhum arquivo de shader encontrado.\n";
                 }
 
 
@@ -1807,7 +1810,7 @@ escolheropcoes:
                     echo $bold . $vermelho . "[*] Data de instalação do Free Fire: " . $dataInstalacaoFormatada . "\n";
                     echo $bold . $branco . "[#] Verifique cuidadosamente no App Usage a data de instalação do Free Fire!\n\n";
                 } else {
-                    echo $bold . $fverde . "::i:: Nenhuma alteração suspeita encontrada.\n";
+                    echo $bold . $fverde . "[i] Nenhuma alteração suspeita encontrada.\n";
                 }
 
 
@@ -1855,7 +1858,7 @@ escolheropcoes:
                     echo $bold . $vermelho . "[!] Modificação suspeita detectada na pasta shaders! Aplique o W.O!\n";
                     echo $bold . $roxo . "[*] Data da última modificação: " . $dataModifyFormatada . "\n\n";
                 } else {
-                    echo $bold . $fverde . "::i:: Pasta shaders sem alterações suspeitas.\n";
+                    echo $bold . $fverde . "[i] Pasta shaders sem alterações suspeitas.\n";
                     if (!empty($dataModifyFormatada)) {
                         echo $bold . $roxo . "[*] Data da última modificação: " . $dataModifyFormatada . "\n\n";
                     } else {
@@ -1890,17 +1893,17 @@ escolheropcoes:
 
                         if ($dataAccess === $dataModify && $dataModify === $dataChange) {
                             echo $bold . $vermelho . "[!] Possível bypass detectado - Datas idênticas\n";
-                            echo $bold . $vermelho . "::i:: Data: " . $dataModifyFormatada . "\n";
+                            echo $bold . $vermelho . "[i] Data: " . $dataModifyFormatada . "\n";
                         } elseif ($dataModify === $dataChange) {
-                            echo $bold . $roxo . "::i:: Modificação da pasta: " . $dataModifyFormatada . "\n";
+                            echo $bold . $roxo . "[i] Modificação da pasta: " . $dataModifyFormatada . "\n";
                         } else {
                             echo $bold . $vermelho . "[!] Discrepância encontrada\n";
                             $dateAccess = DateTime::createFromFormat('Y-m-d H:i:s.u', $dataAccess);
                             $dateChange = DateTime::createFromFormat('Y-m-d H:i:s.u', $dataChange);
                             if ($dateAccess && $dateChange) {
-                                echo $bold . $roxo . "::i:: Acesso: " . $dateAccess->format('d-m-Y H:i:s') . "\n";
-                                echo $bold . $roxo . "::i:: Modificação: " . $dataModifyFormatada . "\n";
-                                echo $bold . $roxo . "::i:: Mudança: " . $dateChange->format('d-m-Y H:i:s') . "\n";
+                                echo $bold . $roxo . "[i] Acesso: " . $dateAccess->format('d-m-Y H:i:s') . "\n";
+                                echo $bold . $roxo . "[i] Modificação: " . $dataModifyFormatada . "\n";
+                                echo $bold . $roxo . "[i] Mudança: " . $dateChange->format('d-m-Y H:i:s') . "\n";
                             }
                         }
                     } else {
@@ -2009,7 +2012,7 @@ escolheropcoes:
                     }
 
                     if (!$modificacaoDetectada) {
-                        echo $bold . $fverde . "::i:: Nenhuma alteração suspeita encontrada nos arquivos.\n\n";
+                        echo $bold . $fverde . "[i] Nenhuma alteração suspeita encontrada nos arquivos.\n\n";
                     }
                 } else {
                     echo $vermelho . "[*] Sem itens baixados! Verifique se a data é após o fim da partida!\n\n";
@@ -2052,7 +2055,7 @@ escolheropcoes:
                 echo $bold . $branco . "[+] Após verificar in-game se o usuário está de Wallhack, olhando skins de armas e atrás da parede, verifique os horários do Shaders e OBB e compare também com o horário do replay, caso esteja muito diferente as datas, aplique o W.O!\n\n";
 
                 echo $bold . $branco . "\n\n\t Obrigado por compactuar por um cenário limpo de cheats.\n";
-                echo $bold . $branco . "\t                 com agradecimento, menordebilhao, ...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+                echo $bold . $branco . "\t                 Com carinho, EDUZADA...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
         } elseif ($opcaoscanner == 's' || $opcaoscanner == 'S') {
             echo "\n\n\t Obrigado por compactuar por um cenário limpo de cheats.\n\n";
             die();
