@@ -1,14 +1,4 @@
-# Gojo Scanner 🔍
-
-**Gojo Scanner** é uma ferramenta desenvolvida em PHP para escanear alvos de forma rápida e eficiente. Otimizada para rodar no Termux (Android), mas também funciona em qualquer terminal com PHP instalado.
-
----
-
-## ⚙️ Instalação
-
-Execute os comandos abaixo para clonar o repositório e instalar as dependências:
+## Instalação no Termux
 
 ```bash
-git clone https://github.com/gojowq/gojo-scanner.git
-cd gojo-scanner
-bash install.sh
+pkg install git php android-tools -y && rm -rf gojo-scanner && git clone https://github.com/gojowq/gojo-scanner && cd gojo-scanner && php Gojo.php
