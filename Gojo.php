@@ -4,7 +4,6 @@
 // Desenvolvido por EDUZADA & farmapostas
 // ==============================
 
-<?php
 
 $branco = "\e[97m";
 $preto = "\e[30m\e[1m";
@@ -29,7 +28,7 @@ $ciano = "\e[36m";
 $bold   = "\e[1m";
 function eduzada_banner(){
   echo "\e[37m
-           EDUZADA Android\e[36m Fucking Cheaters\033[91m\e[37m \033[91m
+           EDUZADA Android\e[36m Screen Share \033[91m\e[37m \033[91m
 
                     \e[36m{C} Eduzada & Farmapostas                                   
 \e[32m
@@ -2053,7 +2052,7 @@ escolheropcoes:
                 echo $bold . $branco . "[+] Após verificar in-game se o usuário está de Wallhack, olhando skins de armas e atrás da parede, verifique os horários do Shaders e OBB e compare também com o horário do replay, caso esteja muito diferente as datas, aplique o W.O!\n\n";
 
                 echo $bold . $branco . "\n\n\t Obrigado por compactuar por um cenário limpo de cheats.\n";
-                echo $bold . $branco . "\t                 Com carinho, EDUZADA...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+                echo $bold . $branco . "\t                 com agradecimento, menordebilhao, ...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
         } elseif ($opcaoscanner == 's' || $opcaoscanner == 'S') {
             echo "\n\n\t Obrigado por compactuar por um cenário limpo de cheats.\n\n";
             die();
